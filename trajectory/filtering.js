@@ -58,7 +58,6 @@ function filter(csv_trajectory, interval, method) {
     } else if (method === "median") {
         // Extract x coordinates in a flat array and apply averages on these coordinates
         var x_coordinates_median = moving_median(coordinates.map((x) => { return x[0] }), interval);
-        console.log(x_coordinates_median);
         // Extract y coordinates in a flat array and apply averages on these coordinates
         var y_coordinates_median = moving_median(coordinates.map((x) => { return x[1] }), interval);
         // Merge the coordinates back into its original data format
@@ -69,7 +68,6 @@ function filter(csv_trajectory, interval, method) {
 
     }
 
-    console.log("creating geojson object");
     var geoJSON = createGeoJSONObject(coordinates);
 
     return geoJSON;

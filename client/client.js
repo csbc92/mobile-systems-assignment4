@@ -1,9 +1,22 @@
-async function testPost() {
+async function testMedian() {
+    try {
+        const data = await postData('http://localhost:3000/trajectory/median',
+        {
+            csv_data: csv_running,
+            interval: 10
+        });
+
+        console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function testMean() {
     try {
         const data = await postData('http://localhost:3000/trajectory/mean',
         {
             csv_data: csv_running,
-            method: "mean",
             interval: 10
         });
 
@@ -16,8 +29,6 @@ async function testPost() {
 
 
 async function postData(url = '', data = {}) {
-
-    console.log(JSON.stringify(data));
 
     // Default options are marked with *
     const response = await fetch(url, {
