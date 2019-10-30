@@ -34,6 +34,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Listen to a specified port, or default to 8000
-app.listen(args[0] || 8000);
+// This environment variable is used by the bin/www script
+process.env.PORT = args[0];
 
 module.exports = app;

@@ -17,6 +17,9 @@ router.post('/mean', function (req, res) {
   var geoJSON = filtering.filter(json.csv_data, json.interval, "mean");
 
   // Return the GeoJSON object
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   return res.json(geoJSON);
 });
 
@@ -28,6 +31,9 @@ router.post('/median', function (req, res) {
   var geoJSON = filtering.filter(json.csv_data, json.interval, "median");
 
   // Return the GeoJSON object
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   return res.json(geoJSON);
 });
 
