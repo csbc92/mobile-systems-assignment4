@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var trajectoryRouter = require('./routes/trajectory');
 
+let args = process.argv.splice(2);
 var app = express();
 
 app.use(logger('dev'));
@@ -31,5 +32,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send('error');
 });
+
+// Listen to a specified port, or default to 8000
+app.listen(args[0] || 8000);
 
 module.exports = app;
