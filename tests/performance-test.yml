@@ -1,0 +1,19 @@
+config:
+  target: 'http://localhost:3000' # Target server with the trajectory API
+  phases:
+    - duration: 60 # test duration
+      arrivalCount: 500 # Number of requests over the duration
+  processor: "./request-builder.js"
+scenarios:
+  - name: "Mean API test"
+    weight: 50 # Average 50% of users
+    flow: 
+    - post:
+        url: "/trajectory/mean"
+        beforeRequest: setJSONBody
+  - name: "Median API test"
+    weight: 50 # Average 50% of users
+    flow: 
+    - post:
+        url: "/trajectory/median"
+        beforeRequest: setJSONBody
