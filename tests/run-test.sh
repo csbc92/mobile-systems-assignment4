@@ -1,2 +1,2 @@
 #!/bin/bash
-artillery run performance.yml
+artillery run performance-test.yml
