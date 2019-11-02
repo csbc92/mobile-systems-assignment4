@@ -18,7 +18,7 @@ The purpose of the prototype is to see if performance (i.e. latency, requests pr
 ## NodeJS trajectory filtering API
 Nodes can be started manually by issuing `npm start <port>`. The default start script for the trajectory API are located here: `start-node-servers.sh`. Modify this to match your requirements i.e. the number of nodes and which ports they use.
 
-```
+```bash
 #!/bin/bash
 # Add more nodes here as necessary
 npm start 8001 &  <--- Change the port
@@ -37,6 +37,32 @@ The default port number `3000` can be changed in the script `start-nodejs-setup.
 #!/bin/bash
 node load-balancer.js 3000 &  <--- Change the port
 ./start-node-servers.sh
+```
+
+The pool of available web servers should be set in `load-balancer.js`.
+```js
+/* eslint-env es6, node */
+
+/**
+ * Code originally by Ross Johnson
+ * Introduction to Load Balancing using Node.js - Part 1
+ * https://mazira.com/blog/introduction-load-balancing-nodejs
+ */
+let arguments = process.argv.splice(2);
+let http      = require('http');
+let httpProxy = require('http-proxy');
+
+//
+// Addresses to use in the round robin proxy
+//
+let addresses = [
+    { target: 'http://localhost:8001' },  <-- Change the server addresses
+    { target: 'http://localhost:8002' },
+    { target: 'http://localhost:8003' },
+    { target: 'http://localhost:8004' }
+];
+
+// ..
 ```
 
 ### Nginx load balancer
@@ -76,7 +102,7 @@ docker run --name $NAME -p $EXTERNALPORT:$INTERNALPORT -v $PWD/html:/usr/share/n
 ## Artillery.io performance test
 The test itself is written in YAML for artillery.io. The `target` in the YAML file `tests/performance-test.yml` must be set to match the IP:PORT of the load-balancer.
 
-```
+```yaml
 config:
   target: 'http://192.168.0.4:3000' # Target server with the trajectory API
   
