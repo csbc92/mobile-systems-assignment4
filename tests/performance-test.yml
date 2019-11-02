@@ -1,8 +1,8 @@
 config:
-  target: 'http://192.168.0.4:3000' # Target server with the trajectory API
+  target: 'http://192.168.0.13:3000' # Target server with the trajectory API
   phases:
     - duration: 120 # test duration
-      arrivalRate: 20 # Number of requests every second
+      arrivalRate: 30 # Number of requests every second
   processor: "./request-builder.js"
 scenarios:
   - name: "Mean API test"

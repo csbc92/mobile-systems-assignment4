@@ -1,5 +1,5 @@
 #!/bin/bash
-SERVER=192.168.0.4
+SERVER=192.168.0.13
 USERNAME=ccl
 GITREPO=/home/$USERNAME/git/mobile-systems-assignment4
 
