@@ -30,7 +30,7 @@ npm start 8004 &  <--- Change the port
 ## Load balancers
 Use either NodeJS or Nginx. Not both at the same time (even though it is possible).
 
-### NodeJS load balancer
+### NodeJS load balancer (not used for the performance test)
 The default port number `3000` can be changed in the script `start-nodejs-setup.sh`
 
 ```
@@ -108,4 +108,7 @@ config:
   
   //... 
 ```
-The performance test can be run by issuing `tests/run-test.sh`. The output of the test is in the directory `tests/out`
+* The performance test can be run once by issuing `tests/run-test.sh`. The output of the test is in the directory `tests/out`, or
+* the performance test can be run automatically for 1-n nodes with the use of the script `tests/automatic-remote-test.sh`. With this script it is possible to configure the server remotely over `ssh`. This methods requires that you have generated ssh-keys so that you can connect to the server without entering passwords. The script will copy the configs from the folder `tests/nginx-confs`. The IPs in this folder can be changed at once with the command `sed -i 's/old-ip/new-ip/g' *` - for example if you want to replace localhost with 192.168.0.10:`sed -i 's/localhost/192.168.0.10/g' *`
+
+# Results
