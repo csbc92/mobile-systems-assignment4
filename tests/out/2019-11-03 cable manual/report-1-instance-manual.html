@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artillery report</title>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js" charset="utf-8"></script>
+
+  <style>
+  body, p, li {
+    font-family: sans-serif;
+    font-size: 10pt;
+  }
+
+  h1 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  #errorsContainer > p {
+    color: #009900;
+  }
+
+  #footer {
+    padding: 1em;
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin-top: 1em;
+    background-color: #eee;
+  }
+  #editor {
+    font-size: 8pt;
+    height: 20em;
+  }
+  </style>
+
+  <script>
+  window.Report = {
+  "aggregate": {
+    "timestamp": "2019-11-03T10:17:46.792Z",
+    "scenariosCreated": 600,
+    "scenariosCompleted": 600,
+    "requestsCompleted": 60000,
+    "latency": {
+      "min": 2.9,
+      "max": 13040.7,
+      "median": 4492.5,
+      "p95": 4829.6,
+      "p99": 4932.7
+    },
+    "rps": {
+      "count": 60000,
+      "mean": 126.9
+    },
+    "scenarioDuration": {
+      "min": 140682.1,
+      "max": 431960.3,
+      "median": 420273,
+      "p95": 428046.7,
+      "p99": 429923.7
+    },
+    "scenarioCounts": {
+      "Median API test": 303,
+      "Mean API test": 297
+    },
+    "errors": {},
+    "codes": {
+      "200": 60000
+    },
+    "matches": 0,
+    "customStats": {},
+    "counters": {},
+    "scenariosAvoided": 0,
+    "phases": [
+      {
+        "duration": 60,
+        "arrivalRate": 10
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2019-11-03T10:10:03.918Z",
+      "scenariosCreated": 99,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1197,
+      "latency": {
+        "min": 5.7,
+        "max": 1564.9,
+        "median": 330.6,
+        "p95": 689.6,
+        "p99": 1122.6
+      },
+      "rps": {
+        "count": 1295,
+        "mean": 131.07
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Median API test": 53,
+        "Mean API test": 46
+      },
+      "errors": {},
+      "codes": {
+        "200": 1197
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 99,
+      "pendingRequests": 98,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:10:13.908Z",
+      "scenariosCreated": 100,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1184,
+      "latency": {
+        "min": 628.4,
+        "max": 3506,
+        "median": 1089,
+        "p95": 1791.4,
+        "p99": 2780
+      },
+      "rps": {
+        "count": 1283,
+        "mean": 128.43
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Median API test": 53,
+        "Mean API test": 47
+      },
+      "errors": {},
+      "codes": {
+        "200": 1184
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 199,
+      "pendingRequests": 197,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:10:23.908Z",
+      "scenariosCreated": 100,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1216,
+      "latency": {
+        "min": 1325.6,
+        "max": 5504.7,
+        "median": 1843.7,
+        "p95": 3105.8,
+        "p99": 4605.3
+      },
+      "rps": {
+        "count": 1309,
+        "mean": 130.9
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Mean API test": 44,
+        "Median API test": 56
+      },
+      "errors": {},
+      "codes": {
+        "200": 1216
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 299,
+      "pendingRequests": 290,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:10:33.905Z",
+      "scenariosCreated": 100,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1213,
+      "latency": {
+        "min": 2001.9,
+        "max": 7539.8,
+        "median": 2480.2,
+        "p95": 4212.6,
+        "p99": 6479.4
+      },
+      "rps": {
+        "count": 1313,
+        "mean": 131.43
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Mean API test": 58,
+        "Median API test": 42
+      },
+      "errors": {},
+      "codes": {
+        "200": 1213
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 399,
+      "pendingRequests": 390,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:10:43.906Z",
+      "scenariosCreated": 100,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1243,
+      "latency": {
+        "min": 2790.2,
+        "max": 8642.2,
+        "median": 3129.9,
+        "p95": 3584.2,
+        "p99": 7547.7
+      },
+      "rps": {
+        "count": 1346,
+        "mean": 134.6
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Median API test": 55,
+        "Mean API test": 45
+      },
+      "errors": {},
+      "codes": {
+        "200": 1243
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 499,
+      "pendingRequests": 493,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:10:53.905Z",
+      "scenariosCreated": 100,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1241,
+      "latency": {
+        "min": 3210.2,
+        "max": 11369.6,
+        "median": 3763.7,
+        "p95": 7145.7,
+        "p99": 10260.7
+      },
+      "rps": {
+        "count": 1342,
+        "mean": 134.2
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Mean API test": 56,
+        "Median API test": 44
+      },
+      "errors": {},
+      "codes": {
+        "200": 1241
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 599,
+      "pendingRequests": 594,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:03.908Z",
+      "scenariosCreated": 1,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1246,
+      "latency": {
+        "min": 4174.3,
+        "max": 13040.7,
+        "median": 4470.4,
+        "p95": 7136.7,
+        "p99": 11926.4
+      },
+      "rps": {
+        "count": 1243,
+        "mean": 124.3
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Mean API test": 1
+      },
+      "errors": {},
+      "codes": {
+        "200": 1246
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 591,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:13.915Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1251,
+      "latency": {
+        "min": 4518.1,
+        "max": 9511.6,
+        "median": 4737.2,
+        "p95": 4819.1,
+        "p99": 4859.2
+      },
+      "rps": {
+        "count": 1259,
+        "mean": 125.9
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1251
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 599,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:23.909Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1236,
+      "latency": {
+        "min": 4660.8,
+        "max": 9666.9,
+        "median": 4788.4,
+        "p95": 4939.2,
+        "p99": 4974.6
+      },
+      "rps": {
+        "count": 1237,
+        "mean": 123.82
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1236
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 600,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:33.906Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1253,
+      "latency": {
+        "min": 4577.4,
+        "max": 9742.3,
+        "median": 4802.4,
+        "p95": 4927.6,
+        "p99": 4968
+      },
+      "rps": {
+        "count": 1253,
+        "mean": 125.43
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1253
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 600,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:43.910Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1242,
+      "latency": {
+        "min": 4662.3,
+        "max": 9624.7,
+        "median": 4803.4,
+        "p95": 4866.9,
+        "p99": 4889.3
+      },
+      "rps": {
+        "count": 1241,
+        "mean": 124.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1242
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 599,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:11:53.906Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1257,
+      "latency": {
+        "min": 4659.2,
+        "max": 9756.8,
+        "median": 4816.8,
+        "p95": 4926.6,
+        "p99": 4970.3
+      },
+      "rps": {
+        "count": 1257,
+        "mean": 125.7
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1257
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 599,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:03.907Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1270,
+      "latency": {
+        "min": 4453.3,
+        "max": 9446.2,
+        "median": 4700.4,
+        "p95": 4867.6,
+        "p99": 4923
+      },
+      "rps": {
+        "count": 1271,
+        "mean": 127.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1270
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 600,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:13.912Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1311,
+      "latency": {
+        "min": 4296.6,
+        "max": 9436.9,
+        "median": 4588.5,
+        "p95": 4745.4,
+        "p99": 4790.6
+      },
+      "rps": {
+        "count": 1310,
+        "mean": 131
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1311
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 600,
+      "pendingRequests": 599,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:23.910Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 2,
+      "requestsCompleted": 1254,
+      "latency": {
+        "min": 4574.1,
+        "max": 9612.2,
+        "median": 4768.9,
+        "p95": 4920.8,
+        "p99": 4968.4
+      },
+      "rps": {
+        "count": 1253,
+        "mean": 125.3
+      },
+      "scenarioDuration": {
+        "min": 140682.1,
+        "max": 145323.4,
+        "median": 143002.8,
+        "p95": 145323.4,
+        "p99": 145323.4
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1254
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 598,
+      "pendingRequests": 598,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:33.906Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1300,
+      "latency": {
+        "min": 4443,
+        "max": 9426.5,
+        "median": 4692,
+        "p95": 4803.5,
+        "p99": 4839
+      },
+      "rps": {
+        "count": 1299,
+        "mean": 130.03
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1300
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 598,
+      "pendingRequests": 597,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:43.911Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1307,
+      "latency": {
+        "min": 4361.4,
+        "max": 9116.3,
+        "median": 4551.1,
+        "p95": 4635.5,
+        "p99": 4649
+      },
+      "rps": {
+        "count": 1307,
+        "mean": 130.7
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1307
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 598,
+      "pendingRequests": 597,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:12:53.910Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 1,
+      "requestsCompleted": 1279,
+      "latency": {
+        "min": 4410.1,
+        "max": 9258.1,
+        "median": 4596.2,
+        "p95": 4746.1,
+        "p99": 4776.5
+      },
+      "rps": {
+        "count": 1279,
+        "mean": 127.9
+      },
+      "scenarioDuration": {
+        "min": 177292.5,
+        "max": 177292.5,
+        "median": 177292.5,
+        "p95": 177292.5,
+        "p99": 177292.5
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1279
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 597,
+      "pendingRequests": 597,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:03.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 1,
+      "requestsCompleted": 1273,
+      "latency": {
+        "min": 4484.7,
+        "max": 9470.2,
+        "median": 4700.9,
+        "p95": 4857.3,
+        "p99": 4914.6
+      },
+      "rps": {
+        "count": 1271,
+        "mean": 126.97
+      },
+      "scenarioDuration": {
+        "min": 182175.2,
+        "max": 182175.2,
+        "median": 182175.2,
+        "p95": 182175.2,
+        "p99": 182175.2
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1273
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 596,
+      "pendingRequests": 595,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:13.916Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1244,
+      "latency": {
+        "min": 4641.3,
+        "max": 9523.2,
+        "median": 4777.2,
+        "p95": 4847.4,
+        "p99": 4865
+      },
+      "rps": {
+        "count": 1245,
+        "mean": 124.5
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1244
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 596,
+      "pendingRequests": 596,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:23.915Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1301,
+      "latency": {
+        "min": 4397.6,
+        "max": 9542.5,
+        "median": 4560.4,
+        "p95": 4771.4,
+        "p99": 4789.4
+      },
+      "rps": {
+        "count": 1300,
+        "mean": 130
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1301
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 596,
+      "pendingRequests": 595,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:33.911Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 2,
+      "requestsCompleted": 1279,
+      "latency": {
+        "min": 4403,
+        "max": 9410.7,
+        "median": 4612.3,
+        "p95": 4789.7,
+        "p99": 4814.6
+      },
+      "rps": {
+        "count": 1277,
+        "mean": 127.83
+      },
+      "scenarioDuration": {
+        "min": 209919.4,
+        "max": 219228.1,
+        "median": 214573.7,
+        "p95": 219228.1,
+        "p99": 219228.1
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1279
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 594,
+      "pendingRequests": 593,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:43.911Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1279,
+      "latency": {
+        "min": 4542.8,
+        "max": 9401.7,
+        "median": 4698,
+        "p95": 4765.1,
+        "p99": 4810
+      },
+      "rps": {
+        "count": 1280,
+        "mean": 128
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1279
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 594,
+      "pendingRequests": 594,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:13:53.909Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1285,
+      "latency": {
+        "min": 4476.2,
+        "max": 9215.3,
+        "median": 4575.9,
+        "p95": 4698.1,
+        "p99": 4716.2
+      },
+      "rps": {
+        "count": 1285,
+        "mean": 128.5
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1285
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 594,
+      "pendingRequests": 594,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:03.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 1,
+      "requestsCompleted": 1279,
+      "latency": {
+        "min": 4385.5,
+        "max": 9163.9,
+        "median": 4608.9,
+        "p95": 4759,
+        "p99": 4776.6
+      },
+      "rps": {
+        "count": 1278,
+        "mean": 127.93
+      },
+      "scenarioDuration": {
+        "min": 242043,
+        "max": 242043,
+        "median": 242043,
+        "p95": 242043,
+        "p99": 242043
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1279
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 593,
+      "pendingRequests": 593,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:13.914Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 1,
+      "requestsCompleted": 1290,
+      "latency": {
+        "min": 4482.6,
+        "max": 9450.2,
+        "median": 4569.8,
+        "p95": 4693.8,
+        "p99": 4709.4
+      },
+      "rps": {
+        "count": 1289,
+        "mean": 128.9
+      },
+      "scenarioDuration": {
+        "min": 255817.6,
+        "max": 255817.6,
+        "median": 255817.6,
+        "p95": 255817.6,
+        "p99": 255817.6
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1290
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 592,
+      "pendingRequests": 592,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:23.912Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 2,
+      "requestsCompleted": 1274,
+      "latency": {
+        "min": 4396.9,
+        "max": 9269.6,
+        "median": 4638,
+        "p95": 4816.5,
+        "p99": 4834.2
+      },
+      "rps": {
+        "count": 1271,
+        "mean": 127.1
+      },
+      "scenarioDuration": {
+        "min": 260480.4,
+        "max": 260717.5,
+        "median": 260598.9,
+        "p95": 260717.5,
+        "p99": 260717.5
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1274
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 590,
+      "pendingRequests": 589,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:33.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 3,
+      "requestsCompleted": 1321,
+      "latency": {
+        "min": 4336.7,
+        "max": 9066.9,
+        "median": 4517.7,
+        "p95": 4650.1,
+        "p99": 4683.5
+      },
+      "rps": {
+        "count": 1319,
+        "mean": 131.9
+      },
+      "scenarioDuration": {
+        "min": 273750,
+        "max": 278251.9,
+        "median": 273848.4,
+        "p95": 278251.9,
+        "p99": 278251.9
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1321
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 587,
+      "pendingRequests": 587,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:43.909Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 1279,
+      "latency": {
+        "min": 4422.2,
+        "max": 9164.1,
+        "median": 4532.9,
+        "p95": 4632.2,
+        "p99": 4671.7
+      },
+      "rps": {
+        "count": 1278,
+        "mean": 127.93
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1279
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 587,
+      "pendingRequests": 586,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:14:53.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 1,
+      "requestsCompleted": 1274,
+      "latency": {
+        "min": 4348,
+        "max": 9236,
+        "median": 4577,
+        "p95": 4714.2,
+        "p99": 4733.7
+      },
+      "rps": {
+        "count": 1273,
+        "mean": 127.17
+      },
+      "scenarioDuration": {
+        "min": 291848,
+        "max": 291848,
+        "median": 291848,
+        "p95": 291848,
+        "p99": 291848
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1274
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 586,
+      "pendingRequests": 585,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:03.914Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 4,
+      "requestsCompleted": 1278,
+      "latency": {
+        "min": 4500.7,
+        "max": 9204.5,
+        "median": 4607.6,
+        "p95": 4750.2,
+        "p99": 4798.6
+      },
+      "rps": {
+        "count": 1274,
+        "mean": 127.53
+      },
+      "scenarioDuration": {
+        "min": 300781.2,
+        "max": 305274.2,
+        "median": 303024.5,
+        "p95": 305274.2,
+        "p99": 305274.2
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1278
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 582,
+      "pendingRequests": 581,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:13.910Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 3,
+      "requestsCompleted": 1296,
+      "latency": {
+        "min": 4312.4,
+        "max": 9229.8,
+        "median": 4488.3,
+        "p95": 4581.1,
+        "p99": 4617.2
+      },
+      "rps": {
+        "count": 1294,
+        "mean": 129.4
+      },
+      "scenarioDuration": {
+        "min": 309693,
+        "max": 314002.4,
+        "median": 310430.4,
+        "p95": 314002.4,
+        "p99": 314002.4
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1296
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 579,
+      "pendingRequests": 579,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:23.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 6,
+      "requestsCompleted": 1337,
+      "latency": {
+        "min": 4153.4,
+        "max": 8813.2,
+        "median": 4307.4,
+        "p95": 4471.1,
+        "p99": 4495.9
+      },
+      "rps": {
+        "count": 1331,
+        "mean": 132.97
+      },
+      "scenarioDuration": {
+        "min": 318216.3,
+        "max": 326570.9,
+        "median": 322254.4,
+        "p95": 326570.9,
+        "p99": 326570.9
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1337
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 573,
+      "pendingRequests": 573,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:33.914Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 5,
+      "requestsCompleted": 1309,
+      "latency": {
+        "min": 4181.9,
+        "max": 8790.9,
+        "median": 4360.7,
+        "p95": 4446.6,
+        "p99": 4477.7
+      },
+      "rps": {
+        "count": 1304,
+        "mean": 130.53
+      },
+      "scenarioDuration": {
+        "min": 330432.8,
+        "max": 334683.1,
+        "median": 330618.8,
+        "p95": 334683.1,
+        "p99": 334683.1
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1309
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 568,
+      "pendingRequests": 568,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:43.911Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 5,
+      "requestsCompleted": 1267,
+      "latency": {
+        "min": 4323.5,
+        "max": 8967.3,
+        "median": 4472.5,
+        "p95": 4528.3,
+        "p99": 4542.5
+      },
+      "rps": {
+        "count": 1262,
+        "mean": 126.33
+      },
+      "scenarioDuration": {
+        "min": 338899.5,
+        "max": 343341,
+        "median": 343077.9,
+        "p95": 343341,
+        "p99": 343341
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1267
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 563,
+      "pendingRequests": 563,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:15:53.913Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 3,
+      "requestsCompleted": 1230,
+      "latency": {
+        "min": 4329.8,
+        "max": 9175,
+        "median": 4530.8,
+        "p95": 4721.3,
+        "p99": 4741.2
+      },
+      "rps": {
+        "count": 1227,
+        "mean": 122.7
+      },
+      "scenarioDuration": {
+        "min": 347431,
+        "max": 352131.9,
+        "median": 351933.8,
+        "p95": 352131.9,
+        "p99": 352131.9
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1230
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 560,
+      "pendingRequests": 560,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:03.913Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 1261,
+      "latency": {
+        "min": 4169,
+        "max": 9035.7,
+        "median": 4409.9,
+        "p95": 4656.5,
+        "p99": 4678.4
+      },
+      "rps": {
+        "count": 1250,
+        "mean": 125
+      },
+      "scenarioDuration": {
+        "min": 355981.7,
+        "max": 364354.1,
+        "median": 359995.9,
+        "p95": 364354.1,
+        "p99": 364354.1
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1261
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 550,
+      "pendingRequests": 549,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:13.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 8,
+      "requestsCompleted": 1271,
+      "latency": {
+        "min": 4089.3,
+        "max": 8645.8,
+        "median": 4328.4,
+        "p95": 4437.8,
+        "p99": 4465.8
+      },
+      "rps": {
+        "count": 1264,
+        "mean": 126.27
+      },
+      "scenarioDuration": {
+        "min": 367514.2,
+        "max": 372206.8,
+        "median": 368022.1,
+        "p95": 372206.8,
+        "p99": 372206.8
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1271
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 542,
+      "pendingRequests": 542,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:23.915Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 1289,
+      "latency": {
+        "min": 4042.8,
+        "max": 8766.3,
+        "median": 4194.5,
+        "p95": 4332.5,
+        "p99": 4367.9
+      },
+      "rps": {
+        "count": 1279,
+        "mean": 127.9
+      },
+      "scenarioDuration": {
+        "min": 375290.3,
+        "max": 380328.8,
+        "median": 375813.8,
+        "p95": 380328.8,
+        "p99": 380328.8
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1289
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 532,
+      "pendingRequests": 532,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:33.914Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 18,
+      "requestsCompleted": 1238,
+      "latency": {
+        "min": 4059.7,
+        "max": 8528.9,
+        "median": 4201.9,
+        "p95": 4293.1,
+        "p99": 4324.8
+      },
+      "rps": {
+        "count": 1220,
+        "mean": 122.12
+      },
+      "scenarioDuration": {
+        "min": 383059.6,
+        "max": 390677.6,
+        "median": 387047.7,
+        "p95": 390638.8,
+        "p99": 390677.6
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1238
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 514,
+      "pendingRequests": 514,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:43.916Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 19,
+      "requestsCompleted": 1260,
+      "latency": {
+        "min": 3918.6,
+        "max": 8414.2,
+        "median": 4127.9,
+        "p95": 4285.8,
+        "p99": 4313.3
+      },
+      "rps": {
+        "count": 1241,
+        "mean": 124.22
+      },
+      "scenarioDuration": {
+        "min": 394416.4,
+        "max": 399775.1,
+        "median": 397135.3,
+        "p95": 399487.7,
+        "p99": 399775.1
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1260
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 495,
+      "pendingRequests": 495,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:16:53.920Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 21,
+      "requestsCompleted": 1318,
+      "latency": {
+        "min": 3452.5,
+        "max": 8162.8,
+        "median": 3741.4,
+        "p95": 4012.4,
+        "p99": 4056.7
+      },
+      "rps": {
+        "count": 1297,
+        "mean": 129.7
+      },
+      "scenarioDuration": {
+        "min": 401886.5,
+        "max": 407585.2,
+        "median": 404057.6,
+        "p95": 407483.9,
+        "p99": 407585.2
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1318
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 474,
+      "pendingRequests": 474,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:03.917Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 35,
+      "requestsCompleted": 1297,
+      "latency": {
+        "min": 3277.9,
+        "max": 7511,
+        "median": 3674.1,
+        "p95": 3805.8,
+        "p99": 3824.4
+      },
+      "rps": {
+        "count": 1262,
+        "mean": 126.33
+      },
+      "scenarioDuration": {
+        "min": 408169.2,
+        "max": 415717.3,
+        "median": 412885.9,
+        "p95": 414872.9,
+        "p99": 415717.3
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1297
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 439,
+      "pendingRequests": 439,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:13.916Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 35,
+      "requestsCompleted": 1291,
+      "latency": {
+        "min": 3172.6,
+        "max": 6800.1,
+        "median": 3367.3,
+        "p95": 3471.3,
+        "p99": 3493.6
+      },
+      "rps": {
+        "count": 1256,
+        "mean": 125.6
+      },
+      "scenarioDuration": {
+        "min": 416020.6,
+        "max": 421492.7,
+        "median": 417805.3,
+        "p95": 421383.4,
+        "p99": 421492.7
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1291
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 404,
+      "pendingRequests": 404,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:23.916Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 60,
+      "requestsCompleted": 1319,
+      "latency": {
+        "min": 2754.8,
+        "max": 6545.6,
+        "median": 2950.3,
+        "p95": 3295.5,
+        "p99": 3325.4
+      },
+      "rps": {
+        "count": 1259,
+        "mean": 125.9
+      },
+      "scenarioDuration": {
+        "min": 420099.6,
+        "max": 428590.2,
+        "median": 423232.2,
+        "p95": 425486.4,
+        "p99": 428341.1
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1319
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 344,
+      "pendingRequests": 344,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:33.913Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 88,
+      "requestsCompleted": 1305,
+      "latency": {
+        "min": 2202,
+        "max": 5760.6,
+        "median": 2503.6,
+        "p95": 2927.8,
+        "p99": 2978
+      },
+      "rps": {
+        "count": 1217,
+        "mean": 121.82
+      },
+      "scenarioDuration": {
+        "min": 423558.5,
+        "max": 431960.3,
+        "median": 425839.3,
+        "p95": 428671.9,
+        "p99": 431148.5
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1305
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 256,
+      "pendingRequests": 256,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:43.921Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 192,
+      "requestsCompleted": 1271,
+      "latency": {
+        "min": 768.2,
+        "max": 4798.1,
+        "median": 1864.5,
+        "p95": 2355.6,
+        "p99": 2434.9
+      },
+      "rps": {
+        "count": 1079,
+        "mean": 107.9
+      },
+      "scenarioDuration": {
+        "min": 414399.4,
+        "max": 431800.7,
+        "median": 423160.7,
+        "p95": 428650.1,
+        "p99": 430746.4
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 1271
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 64,
+      "pendingRequests": 64,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2019-11-03T10:17:46.644Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 64,
+      "requestsCompleted": 285,
+      "latency": {
+        "min": 2.9,
+        "max": 1873.2,
+        "median": 355.7,
+        "p95": 852.3,
+        "p99": 896.8
+      },
+      "rps": {
+        "count": 221,
+        "mean": 81.25
+      },
+      "scenarioDuration": {
+        "min": 411605,
+        "max": 422041.9,
+        "median": 414156.1,
+        "p95": 421098.6,
+        "p99": 422015.5
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 285
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 0,
+      "pendingRequests": 0,
+      "scenariosAvoided": 0
+    }
+  ]
+};
+  </script>
+
+  <style>
+      h1 {
+        line-height: 200%;
+      }
+
+      body {
+          background-color: #fcfcfc;
+      }
+
+      .container {
+          width: 100%;
+          min-width: 960px;
+      }
+  </style>
+
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="row" id="header">
+  <div class="col-lg-4 col-lg-offset-4">
+    <pre style="font-size: 5pt; background-color: #fcfcfc; border: none;">
+            _   _ _ _                                                _
+  __ _ _ __| |_(_) | | ___ _ __ _   _      _ __ ___ _ __   ___  _ __| |_
+ / _` | '__| __| | | |/ _ \ '__| | | |    | '__/ _ \ '_ \ / _ \| '__| __|
+| (_| | |  | |_| | | |  __/ |  | |_| |    | | |  __/ |_) | (_) | |  | |_
+ \__,_|_|   \__|_|_|_|\___|_|   \__, |    |_|  \___| .__/ \___/|_|   \__|
+                                |___/              |_|
+
+    </pre>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="text-center" id="page-title">Test run on <span id="timestamp">date</span></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <p><strong>Summary</strong></p>
+    <table class="table table-bordered table-hover table-condensed">
+      <tbody>
+        <tr>
+          <td>Test duration</td>
+          <td><span id="testDuration">0</span> sec</td>
+        </tr>
+        <tr>
+          <td>Scenarios created</td>
+          <td><span id="scenariosCreated">0</span></td>
+        </tr>
+
+        <tr>
+          <td>Scenarios completed</td>
+          <td><span id="scenariosCompleted">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-lg-5" id="scenarioCountsContainer">
+    <div>
+      <strong>Scenario counts:</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="scenarioCounts">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-1">
+    <div id="codesContainer">
+      <strong>Codes</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="codes">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div id="errorsContainer">
+      <strong>Errors</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="errors">
+      </table>
+    </div>
+  </div>
+</div> <!-- /.row -->
+
+<div class="row">
+  <div class="text-center col-lg-12">
+    <h2>Charts</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="latency-histogram text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="latency text-center col-lg-12"></div>
+</div>
+
+<div class="latency-legend"></div>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+  <div class="concurrency text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="rps-mean text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="rps-count text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="codes-line text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="errors-line text-center col-lg-12"></div>
+</div>
+
+
+  
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h3 class="text-center">Raw report data</h3>
+    <p>This is the raw JSON stats output that the report was generated from.</p>
+    <div id="editor">
+    </div>
+  </div>
+</div>
+
+<script>
+var editor = ace.edit("editor");
+editor.getSession().setMode("ace/mode/javascript");
+editor.setValue(JSON.stringify(Report, null, 2));
+editor.gotoLine(1);editor.setHighlightActiveLine(false);
+
+var l = _;
+
+$('#timestamp').html(moment(Report.aggregate.timestamp).format('DD MMM YYYY HH:mm:SS'));
+$('#testDuration').html(l.size(Report.intermediate) * 10);
+$('#scenariosCompleted').html(Report.aggregate.scenariosCompleted);
+$('#scenariosCreated').html(Report.aggregate.scenariosCreated);
+
+var markers = [];
+if(l.size(Report.phases) > 0) {
+  markers = l.foldl(Report.phases, function(acc, phase, index) {
+    var label = phase.name || 'Phase ' + (index + 1);
+    var timestamp = (index === 0) ? 0 : Report.phases[index - 1].duration + acc[index - 1].timestamp;
+
+    acc.push({
+      timestamp: timestamp,
+      label: label
+    });
+
+    return acc;
+  }, []);
+}
+
+if (l.size(Report.aggregate.scenarioCounts) > 0) {
+  l.each(Report.aggregate.scenarioCounts, function(count, name) {
+    var $tdName = $('<td>' + name + '</td>');
+    var percentage = Math.round(count / Report.aggregate.scenariosCreated * 100 * 1000) / 1000;
+    var $tdCount = $('<td>' + count + ' (' + percentage + '%)' + '</td>');
+    var $el = $('<tr></tr>')
+      .append($tdName)
+      .append($tdCount)
+      .appendTo($('#scenarioCounts'));
+  });
+} else {
+  $('#scenarioCountsContainer').hide();
+}
+
+if (l.size(Report.aggregate.codes) > 0) {
+  l.each(Report.aggregate.codes, function(count, code) {
+    var anchor = '';
+    if (code >= 100 && code < 200) {
+      anchor = '#1xx_Informational';
+    } else if (code >= 200 && code < 300) {
+      anchor = '#2xx_Success';
+    } else if (code >= 300 && code < 400) {
+      anchor = '#3xx_Redirection';
+    } else if (code >= 400 && code < 500) {
+      anchor = '#4xx_Client_Error';
+    } else if (code >= 500 && code < 600) {
+      anchor = '#5xx_Server_Error';
+    }
+
+    var $a = $('<a>' + code + '</a>').attr('href', 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' + anchor);
+    var $td = $('<td></td>').append($a);
+    var $el = $('<tr></tr>')
+      .append($td)
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#codes'));
+  });
+} else {
+  $('#codesContainer').hide();
+}
+
+if (l.size(Report.aggregate.errors) > 0) {
+  l.each(Report.aggregate.errors, function(count, code) {
+    var $el = $('<tr></tr>')
+      .append($('<td>' + code + '</td>'))
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#errors'));
+  });
+} else {
+  $('#errorsContainer > p').html('&#10004; Test completed without network or OS errors.');
+}
+
+var histogramData = l.map(Report.aggregate.latency, function(v, k) { return {bin: k, value: v} });
+
+MG.data_graphic({
+  chart_type: 'bar',
+  x_label: 'Percentile',
+  y_label: '(ms)',
+  animate_on_load: true,
+  title: 'Overall Latency Distribution',
+  description: 'Distribution of all observed response latencies',
+  target: '.latency-histogram',
+  data: histogramData,
+  x_accessor: 'bin',
+  y_accessor: 'value',
+  binned: true,
+  height: 250,
+  interpolate: 'monotone',
+  padding_percentage: 0,
+  bar_orientation: 'vertical',
+  width: 450
+});
+
+var chartData = l.map(
+  window.Report.intermediate,
+  function(o,i) {
+    return {
+      timestamp: i*10+10,
+
+      rpsMean: o.rps.mean,
+      rpsCount: o.rps.count,
+      concurrency: o.concurrency,
+      latencyMax: o.latency.max,
+      latencyp99: o.latency.p99,
+      latencyp95: o.latency.p95,
+      latencyMedian: o.latency.median,
+      latencyMin: o.latency.min
+    }
+  });
+
+//
+// Response codes
+//
+
+if (l.size(Report.aggregate.codes) > 0) {
+  var codesData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.codes, function(count, code) {
+      res[code] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueCodes = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.codes, function(count, code) {
+      if (l.indexOf(acc, code) === -1) {
+        acc.push(code);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    x_label: 'Time',
+    y_label: 'Count',
+    title: 'HTTP codes',
+    description: 'Occurence of HTTP response codes',
+    target: '.codes-line',
+    data: codesData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueCodes,
+    legend: uniqueCodes,
+    right: 50,
+    chart_type: 'line',
+    area: false,
+    markers: markers,
+    width: 900
+  });
+}
+
+//
+// Errors
+//
+
+if (l.size(Report.aggregate.errors) > 0) {
+  var errorData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.errors, function(count, name) {
+      res[name] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueErrors = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.errors, function(count, name) {
+      if (l.indexOf(acc, name) === -1) {
+        acc.push(name);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    title: 'Error Codes',
+    description: 'Occurence of error codes',
+    target: '.errors-line',
+    data: errorData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueErrors,
+    chart_type: 'line',
+    area: false,
+    markers: markers
+  });
+
+}
+
+//
+// Latency
+//
+MG.data_graphic({
+  chart_type: 'line',
+  x_label: 'Time',
+  y_label: '(ms)',
+  animate_on_load: true,
+  area: false,
+  title: "Latency At Intervals",
+  description: "Latency values at different points during the test run",
+  data: chartData,
+  target: '.latency',
+  width: 900,
+  x_accessor: 'timestamp',
+  y_accessor: ['latencyMin', 'latencyMedian', 'latencyp95', 'latencyMax'],
+  legend: ['min', 'p50', 'p95', 'max'],
+  //legend_target: '.latency-legend',
+  right: 50,
+  interpolate: 'monotone',
+  mouseover: function(d, i) {
+  },
+  markers: markers
+        });
+
+            MG.data_graphic({
+            animate_on_load: true,
+            area: false,
+            y_label: 'Count',
+            x_label: 'Time',
+            title: 'Concurrent users',
+            description: 'Concurrent users',
+            data: chartData,
+            target: '.concurrency',
+            x_accessor: 'timestamp',
+            y_accessor: ['concurrency'],
+            interpolate: 'monotone',
+            markers: markers,
+            width: 900
+            });
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'Mean RPS',
+  description: 'Mean requests per second',
+  data: chartData,
+  target: '.rps-mean',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsMean'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'RPS Count',
+  description: 'Count of requests per second',
+  data: chartData,
+  target: '.rps-count',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsCount'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+</script>
+<div id="footer">
+  <footer>This report was created with <a href="https://artillery.io">Artillery</a> - free open-source load-testing for HTTP and WebSockets</footer>
+</div>
+</body>
+</html>
