@@ -112,3 +112,4 @@ config:
 * the performance test can be run automatically for 1-n nodes with the use of the script `tests/automatic-remote-test.sh`. With this script it is possible to configure the server remotely over `ssh`. This methods requires that you have generated ssh-keys so that you can connect to the server without entering passwords. The script will copy the configs from the folder `tests/nginx-confs`. The IPs in this folder can be changed at once with the command `sed -i 's/old-ip/new-ip/g' *` - for example if you want to replace localhost with 192.168.0.10:`sed -i 's/localhost/192.168.0.10/g' *`
 
 # Results
+Find the report in tests/results.pdf
